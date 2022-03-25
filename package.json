@@ -17,7 +17,7 @@
 		"eslint": "^8.11.0",
 		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-svelte3": "^3.4.1",
-		"prettier": "~2.6.0",
+		"prettier": "~2.6.1",
 		"prettier-plugin-svelte": "^2.6.0",
 		"svelte": "^3.46.4",
 		"svelte-check": "^2.4.6",
@@ -33,5 +33,10 @@
 		"knex": "^1.0.4",
 		"mysql2": "^2.3.3",
 		"sveltestrap": "^5.9.0"
+	},
+	"pnpm": {
+		"overrides": {
+			"minimist@<=1.2.5": ">=1.2.6"
+		}
 	}
 }
