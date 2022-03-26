@@ -9,7 +9,8 @@
 		"check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --check --plugin-search-dir=. . && eslint --ignore-path .gitignore .",
 		"format": "prettier --write --plugin-search-dir=. .",
-		"preinstall": "npx only-allow pnpm"
+		"preinstall": "npx only-allow pnpm",
+		"postinstall": "./script/postinstall.sh"
 	},
 	"devDependencies": {
 		"@sveltejs/kit": "next",
@@ -33,6 +34,7 @@
 		"dotenv": "^16.0.0",
 		"express": "^4.17.3",
 		"knex": "^1.0.4",
+		"monero-javascript": "^0.6.4",
 		"mysql2": "^2.3.3",
 		"sveltestrap": "^5.9.0"
 	},
