@@ -14,7 +14,8 @@
 	let isOpen = false;
 	let isLoggedIn = false;
 
-	const toggle = () => (isOpen = !isOpen);
+	const toggleOpen = () => (isOpen = !isOpen);
+	const toggleLogin = () => (isLoggedIn = !isLoggedIn);
 
 	const handleUpdate = () => {
 		return {};
@@ -23,18 +24,23 @@
 
 <Navbar color="light" light expand="md">
 	<NavbarBrand href="/">Monero Sveltekit</NavbarBrand>
-	<NavbarToggler on:click={toggle} />
+	<NavbarToggler on:click={toggleOpen} />
 	<Collapse {isOpen} navbar expand="md" on:update={handleUpdate}>
 		<Nav class="ms-auto" navbar>
 			<NavItem>
 				<NavLink href="/about">About</NavLink>
 			</NavItem>
-			<NavItem>
-				<NavLink href="/login"><Icon name="key-fill" style="color:red" /> Login</NavLink>
-			</NavItem>
-			<NavItem>
-				<NavLink>Logout</NavLink>
-			</NavItem>
+			{#if !isLoggedIn}
+				<NavItem>
+					<NavLink on:click={toggleLogin}><Icon name="key-fill" style="color:red" /> Login</NavLink>
+				</NavItem>
+			{:else}
+				<NavItem>
+					<NavLink on:click={toggleLogin}
+						><Icon name="key-fill" style="color:green" /> Logout</NavLink
+					>
+				</NavItem>
+			{/if}
 		</Nav>
 	</Collapse>
 </Navbar>

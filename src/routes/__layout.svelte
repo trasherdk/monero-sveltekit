@@ -1,8 +1,8 @@
 <script>
 	import { Styles } from 'sveltestrap';
-	import Navbar from '@components/navbar.svelte';
+	import NavBar from '@components/NavBar.svelte';
 </script>
 
-<Navbar />
+<NavBar />
 <slot />
 <Styles />
