@@ -26,10 +26,12 @@
 	<NavbarBrand href="/">Monero Sveltekit</NavbarBrand>
 	<NavbarToggler on:click={toggleOpen} />
 	<Collapse {isOpen} navbar expand="md" on:update={handleUpdate}>
-		<Nav class="ms-auto" navbar>
+		<Nav class="" style="width:50%" navbar>
 			<NavItem>
 				<NavLink href="/about">About</NavLink>
 			</NavItem>
+		</Nav>
+		<Nav class="ms-auto" navbar>
 			{#if !isLoggedIn}
 				<NavItem>
 					<NavLink on:click={toggleLogin}><Icon name="key-fill" style="color:red" /> Login</NavLink>
