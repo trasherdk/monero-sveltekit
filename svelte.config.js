@@ -18,7 +18,8 @@ const config = {
 					// these are the aliases and paths to them
 					'@components': path.resolve('./src/lib/components'),
 					'@lib': path.resolve('./src/lib'),
-					'@utils': path.resolve('./src/lib/utils')
+					'@utils': path.resolve('./src/lib/utils'),
+					'@monero': path.resolve('./static/monero-javascript')
 				}
 			}
 		}
