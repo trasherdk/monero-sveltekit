@@ -10,12 +10,27 @@
 		Icon
 	} from 'sveltestrap';
 
+	import LoginForm from '@components/LoginForm.svelte';
+	import LogoutForm from '@components/LogoutForm.svelte';
+	let isLoggedIn = false;
+	let loginForm = false;
+	let logoutForm = false;
+
 	// variable that control whether mobile menu is open or closed
 	let isOpen = false;
-	let isLoggedIn = false;
 
 	const toggleOpen = () => (isOpen = !isOpen);
-	const toggleLogin = () => (isLoggedIn = !isLoggedIn);
+	const toggleLogin = () => {
+		// console.clear();
+		console.log(
+			`Enter: loginForm: ${loginForm}, logoutForm: ${logoutForm}, isLoggedIn: ${isLoggedIn}`
+		);
+		loginForm = !isLoggedIn;
+		logoutForm = isLoggedIn;
+		console.log(
+			`Exit: loginForm: ${loginForm}, logoutForm: ${logoutForm}, isLoggedIn: ${isLoggedIn}`
+		);
+	};
 
 	const handleUpdate = () => {
 		return {};
@@ -28,21 +43,35 @@
 	<Collapse {isOpen} navbar expand="md" on:update={handleUpdate}>
 		<Nav class="" style="width:50%" navbar>
 			<NavItem>
+				<NavLink href="/AliceBob">Alice & Bob</NavLink>
+			</NavItem>
+			<NavItem>
 				<NavLink href="/about">About</NavLink>
 			</NavItem>
 		</Nav>
 		<Nav class="ms-auto" navbar>
 			{#if !isLoggedIn}
 				<NavItem>
-					<NavLink on:click={toggleLogin}><Icon name="key-fill" style="color:red" /> Login</NavLink>
+					<NavLink on:click={toggleLogin}>
+						<Icon name="lock" style="color:red;font-size:1rem" />
+					</NavLink>
 				</NavItem>
 			{:else}
 				<NavItem>
-					<NavLink on:click={toggleLogin}
-						><Icon name="key-fill" style="color:green" /> Logout</NavLink
-					>
+					<NavLink on:click={toggleLogin}>
+						<Icon name="unlock" style="color:green;font-size:1rem" />
+					</NavLink>
 				</NavItem>
 			{/if}
 		</Nav>
 	</Collapse>
 </Navbar>
+
+<LoginForm bind:authenticated={isLoggedIn} bind:formOpen={loginForm} isOpen={loginForm} size="md" />
+
+<LogoutForm
+	bind:authenticated={isLoggedIn}
+	bind:formOpen={logoutForm}
+	isOpen={logoutForm}
+	size="md"
+/>
