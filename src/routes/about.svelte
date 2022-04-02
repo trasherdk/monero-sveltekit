@@ -75,7 +75,7 @@
 						Svelte and brings features like routing to this template. Visit the SvelteKit site here:
 					</p>
 					<Button href="https://kit.svelte.dev/docs" target="_blank" color="info" outline
-						>Docs</Button
+						>Sveltekit Docs</Button
 					>
 				</Col>
 			</Row>

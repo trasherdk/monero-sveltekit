@@ -6,13 +6,13 @@
 	<title>Monero SvelteKit</title>
 </svelte:head>
 
-<div class="container mt-4">
+<div class="container mt-2">
 	<Row cols={1} class="border-bottom">
 		<Col>
-			<h1>Monero price graph</h1>
+			<h1>Monero on/off ramp</h1>
 		</Col>
 	</Row>
-	<Row cols={3} class="mt-5">
+	<Row cols={3} class="mt-4">
 		<Col>
 			<h2><Image alt="Monero Logo" width="50" src="/monero-logo.svg" /> Monero price</h2>
 			<p>This section will contain a live updated price chart.</p>
