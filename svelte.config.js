@@ -11,6 +11,9 @@ const config = {
 	kit: {
 		// hydrate the <div id="svelte"> element in src/app.html
 		// target: '#svelte'
+		files: {
+			hooks: './src/hooks/index'
+		},
 		adapter: adapter(),
 		vite: {
 			resolve: {
