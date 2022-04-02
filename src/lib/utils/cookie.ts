@@ -1,4 +1,4 @@
-export const parseCookie = (str = '') => {
+export const parseCookie = (str = ''): Record<string, unknown> => {
   const result = {}
   if (str === '') return result
 
