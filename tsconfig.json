@@ -30,6 +30,9 @@
 			],
 			"$lib/*": [
 				"src/lib/*"
+			],
+			"@utils": [
+				"src/lib/utils"
 			]
 		}
 	},
