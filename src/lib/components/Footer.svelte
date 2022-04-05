@@ -28,7 +28,7 @@
 		</span>
 	</Col>
 	<Col class="ms-auto">
-		<small>Copyright &copy; ${new Date().getFullYear()} TrasherDK</small>
+		<small>Copyright &copy; {new Date().getFullYear()} TrasherDK</small>
 	</Col>
 </Row>
 

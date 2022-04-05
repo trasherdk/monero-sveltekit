@@ -17,8 +17,10 @@
 			<h2><Image title="Monero Logo" width="30" src="/images/monero-logo.svg" /> Monero price</h2>
 			<p class="mt-4">This section will contain a live updated price chart.</p>
 			<br />
+
 			<figure>
 				<Image
+					id="chart"
 					src="/images/chart-example.png"
 					style="width:100%;border: 1px solid lightgray"
 					class="p-2 mb-1"
