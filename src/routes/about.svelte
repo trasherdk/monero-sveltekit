@@ -6,7 +6,7 @@
 	<title>Monero SvelteKit</title>
 </svelte:head>
 
-<div class="container mt-4">
+<div class="container mt-2 mb-5">
 	<Row cols={1} class="border-bottom">
 		<Col>
 			<h1>Monero + Monero Javascript + SvelteKit = ♥️</h1>
@@ -14,22 +14,26 @@
 	</Row>
 	<Row cols={3} class="mt-5">
 		<Col>
-			<h2><Image alt="Monero Logo" width="50" src="/monero-logo.svg" /> Monero</h2>
+			<h2><Image alt="Monero Logo" width="50" src="/images/monero-logo.svg" /> Monero</h2>
 			<p>
 				Monero is a private, secure, untraceable, decentralised digital currency. You are your bank,
 				you control your funds, and nobody can trace your transfers unless you allow them to do so..
 			</p>
-			<p>Check Monero out here:</p>
-			<Button
-				href="https://github.com/monero-project/monero/tree/v0.17.3.0#introduction"
-				target="_blank"
-				color="info"
-				outline><Icon name="github" style="color:gray" /> Monero project</Button
-			>
-			and here:
-			<Button href="https://www.getmonero.org/" target="_blank" color="info" outline
-				><Image alt="Monero Logo" width="25" src="/monero-logo.svg" /> Monero website</Button
-			>
+			<p>
+				Check Monero out here:
+				<Button
+					href="https://github.com/monero-project/monero/tree/v0.17.3.0#introduction"
+					target="_blank"
+					color="info"
+					outline><Icon name="github" style="color:gray" /> Monero project</Button
+				>
+			</p>
+			<p>
+				and the web-site here:
+				<Button href="https://www.getmonero.org/" target="_blank" color="info" outline
+					><Image alt="Monero Logo" width="25" src="/images/monero-logo.svg" /> Monero website</Button
+				>
+			</p>
 		</Col>
 		<Col>
 			<h2>⚙️ Monero Javascript</h2>
@@ -84,7 +88,10 @@
 				<h2>💄 Sveltestrap</h2>
 				<p>
 					This template uses Bootstrap (by twitter) in the newest version 5 as CSS-framework. On
-					this page, it's implemented with
+					this page, it's implemented with <strong>Sveltestrap</strong>
+				</p>
+				<p>
+					Check Sveltestrap docs here:
 					<Button
 						href="https://sveltestrap.js.org/?path=/story/components--get-started"
 						target="_blank"
@@ -94,13 +101,15 @@
 						Sveltestrap Docs</Button
 					>
 				</p>
-				<p>Check Bootstrap out here:</p>
-				<Button
-					href="https://getbootstrap.com/docs/5.0/getting-started/introduction/"
-					target="_blank"
-					color="info"
-					outline>Bootstrap Docs</Button
-				>
+				<p>
+					Check Bootstrap docs here:
+					<Button
+						href="https://getbootstrap.com/docs/5.0/getting-started/introduction/"
+						target="_blank"
+						color="info"
+						outline>Bootstrap Docs</Button
+					>
+				</p>
 			</Col>
 		</Col>
 	</Row>

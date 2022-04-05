@@ -7,7 +7,8 @@
 		Nav,
 		NavItem,
 		NavLink,
-		Icon
+		Icon,
+		Image
 	} from 'sveltestrap';
 
 	import LoginForm from '@components/LoginForm.svelte';
@@ -38,7 +39,12 @@
 </script>
 
 <Navbar color="light" light expand="md">
-	<NavbarBrand href="/">Monero Sveltekit</NavbarBrand>
+	<NavbarBrand href="/"
+		><Image
+			src="/images/fumlersoft-shield-cut-100x100.png"
+			style="height:70px;position:absolute;top:50px"
+		/> Monero Sveltekit</NavbarBrand
+	>
 	<NavbarToggler on:click={toggleOpen} />
 	<Collapse {isOpen} navbar expand="md" on:update={handleUpdate}>
 		<Nav class="" style="width:50%" navbar>
@@ -53,12 +59,14 @@
 			{#if !isLoggedIn}
 				<NavItem>
 					<NavLink on:click={toggleLogin}>
+						<span style="color:red;font-size:1rem;font-weight:bold">Login</span>
 						<Icon name="lock" style="color:red;font-size:1rem" />
 					</NavLink>
 				</NavItem>
 			{:else}
 				<NavItem>
 					<NavLink on:click={toggleLogin}>
+						<span style="color:green;font-size:1rem;font-weight:bold">TrasherDK</span>
 						<Icon name="unlock" style="color:green;font-size:1rem" />
 					</NavLink>
 				</NavItem>
@@ -67,11 +75,11 @@
 	</Collapse>
 </Navbar>
 
-<LoginForm bind:authenticated={isLoggedIn} bind:formOpen={loginForm} isOpen={loginForm} size="md" />
+<LoginForm bind:authenticated={isLoggedIn} bind:formOpen={loginForm} isOpen={loginForm} size="sm" />
 
 <LogoutForm
 	bind:authenticated={isLoggedIn}
 	bind:formOpen={logoutForm}
 	isOpen={logoutForm}
-	size="md"
+	size="sm"
 />

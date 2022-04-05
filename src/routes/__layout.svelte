@@ -1,8 +1,10 @@
 <script>
 	import { Styles } from 'sveltestrap';
 	import NavBar from '@components/NavBar.svelte';
+	import Footer from '$lib/components/Footer.svelte';
 </script>
 
 <NavBar />
-<slot />
+<slot style="margin-bottom: 2rem;" />
+<Footer />
 <Styles />
