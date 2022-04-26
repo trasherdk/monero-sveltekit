@@ -6,3 +6,5 @@ export const atomic2dec = (atomic: number, decimals: number) => {
   return str.slice(0, str.indexOf('.') + 1 + decimals)
 
 }
+
+export const dec2atomic = (dec: string | number) => typeof dec === 'string' ? parseFloat(dec) : dec * 1e12
