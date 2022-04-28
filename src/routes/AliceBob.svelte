@@ -1,17 +1,24 @@
 <script lang="ts">
 	import { Button, Col, Row, Image, Icon } from 'sveltestrap';
 	import EasyQr from '$lib/components/EasyQR.svelte';
+	import generatePayload from 'promptpay-qr';
 
-	const logo = '/images/fumlersoft-shield-cut-100x100.png';
-	const qr =
+	const titlogo = '/images/fumlersoft-shield-cut-100x100.png';
+	const titqr = '00020101021129390016A000000677010111031500499909148250453037645802TH63047F59';
+	const titphone = '087-013-3224';
+
+	const xmrqr =
 		'53MMg1e6NL11gjhNsNfCjveLAn7vgP77iYeDeqoLEAXP1PQEKBNnw2WPHJ6viM7pAjEWms6yK3oDjdtVmyvxRWqaM3Xm268';
+	const xmrlogo = '/images/monero-logo.svg';
+
+	const titqrcode = generatePayload(titphone, { amount: 123.45 });
 </script>
 
 <svelte:head>
 	<title>Alice & Bob - Monero SvelteKit</title>
 </svelte:head>
 
-<div class="container mt-2 mb-5">
+<div class="container-xxl mt-2 mb-5">
 	<Row cols={1} class="border-bottom">
 		<Col>
 			<h1>Alice and Bob doing the Monero thing</h1>
@@ -24,9 +31,11 @@
 		<Col>
 			<h3 class="mb-2 border-bottom">Exchange</h3>
 			<Row cols={2}>
-				<Col>Some description.</Col>
 				<Col>
-					<EasyQr codeValue={qr} {logo} />
+					<EasyQr codeValue={titqrcode} logo={titlogo} />
+				</Col>
+				<Col>
+					<EasyQr codeValue={xmrqr} logo={xmrlogo} />
 				</Col>
 			</Row>
 		</Col>
