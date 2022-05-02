@@ -42,7 +42,7 @@ dependencies:
   sveltestrap: 5.9.0_svelte@3.47.0
 
 devDependencies:
-  '@sveltejs/kit': 1.0.0-next.323_svelte@3.47.0
+  '@sveltejs/kit': 1.0.0-next.324_svelte@3.47.0
   '@typescript-eslint/eslint-plugin': 5.21.0_829e74f28e9c9eb05edda582d47d45b8
   '@typescript-eslint/parser': 5.21.0_eslint@8.14.0+typescript@4.6.3
   eslint: 8.14.0
@@ -129,8 +129,8 @@ packages:
       tiny-glob: 0.2.9
     dev: false
 
-  /@sveltejs/kit/1.0.0-next.323_svelte@3.47.0:
-    resolution: {integrity: sha512-5JVBfXZqVcWhsvtxdwtFPEzLNM8FmttNNyN0h5P25KLryF3BeOg5OicRK3t7qNBmWTTNovDgChb/gWmne5Oicg==}
+  /@sveltejs/kit/1.0.0-next.324_svelte@3.47.0:
+    resolution: {integrity: sha512-/CGW9rQpHQLBb2EcMw08yelD/C9hTsypymctUWdhryMTI8n1VWb0gkUcSHsz8n8oAAbKLXqwyHqeLATfcIMg2w==}
     engines: {node: '>=14.13'}
     hasBin: true
     peerDependencies:
