@@ -4,6 +4,7 @@
 
 	export let codeValue;
 	export let logo;
+	export let id = 'easyqrcode';
 	let node;
 
 	onMount(() => {
@@ -19,7 +20,7 @@
 	});
 </script>
 
-<div id="easyqrcode" bind:this={node} />
+<div {id} bind:this={node} />
 
 <style>
 	div {
