@@ -18,7 +18,7 @@
 	<title>Alice & Bob - Monero SvelteKit</title>
 </svelte:head>
 
-<div class="container-xxl mt-2 mb-5">
+<div class="container-90 mt-2 mb-5">
 	<Row cols={1} class="border-bottom">
 		<Col>
 			<h1>Alice and Bob doing the Monero thing</h1>
@@ -32,10 +32,16 @@
 			<h3 class="mb-2 border-bottom">Exchange</h3>
 			<Row cols={2}>
 				<Col>
-					<EasyQr codeValue={titqrcode} logo={titlogo} />
+					<h4>Prompt Pay Mobile</h4>
+					<div class="qr-wrapper">
+						<EasyQr id="promptpay-qr" codeValue={titqrcode} logo={titlogo} />
+					</div>
 				</Col>
 				<Col>
-					<EasyQr codeValue={xmrqr} logo={xmrlogo} />
+					<h4>Monero (Stagenet)</h4>
+					<div class="qr-wrapper">
+						<EasyQr id="monero-qr" codeValue={xmrqr} logo={xmrlogo} />
+					</div>
 				</Col>
 			</Row>
 		</Col>
@@ -44,3 +50,19 @@
 		</Col>
 	</Row>
 </div>
+
+<style>
+	.qr-wrapper {
+		width: 200px;
+	}
+	.container-80 {
+		width: 80%;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.container-90 {
+		width: 90%;
+		margin-left: auto;
+		margin-right: auto;
+	}
+</style>
