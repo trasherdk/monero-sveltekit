@@ -14,7 +14,7 @@
 
 	export let isOpen = false;
 	export let formOpen = false;
-	export let size: any;
+	export let size: string;
 	const toggle = () => {
 		size = 'md';
 		isOpen = !isOpen;
