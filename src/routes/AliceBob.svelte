@@ -16,6 +16,18 @@
 
 <svelte:head>
 	<title>Alice & Bob - Monero SvelteKit</title>
+	<style>
+		.container-80 {
+			width: 80%;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		.container-90 {
+			width: 90%;
+			margin-left: auto;
+			margin-right: auto;
+		}
+	</style>
 </svelte:head>
 
 <div class="container-90 mt-2 mb-5">
@@ -54,15 +66,5 @@
 <style>
 	.qr-wrapper {
 		width: 200px;
-	}
-	.container-80 {
-		width: 80%;
-		margin-left: auto;
-		margin-right: auto;
-	}
-	.container-90 {
-		width: 90%;
-		margin-left: auto;
-		margin-right: auto;
 	}
 </style>
