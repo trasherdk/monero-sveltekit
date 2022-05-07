@@ -11,8 +11,9 @@
 		Image
 	} from 'sveltestrap';
 
-	import LoginForm from '@components/LoginForm.svelte';
-	import LogoutForm from '@components/LogoutForm.svelte';
+	import LoginForm from '$lib/components/LoginForm.svelte';
+	import LogoutForm from '$lib/components/LogoutForm.svelte';
+
 	let isLoggedIn = false;
 	let loginForm = false;
 	let logoutForm = false;

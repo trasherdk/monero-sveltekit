@@ -1,6 +1,6 @@
 <script>
 	import { Styles } from 'sveltestrap';
-	import NavBar from '@components/NavBar.svelte';
+	import NavBar from '$lib/components/NavBar.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 </script>
 
