@@ -1,7 +1,9 @@
 import Path from "path"
 import Express from "express"
 
-import { build } from "../paths"
+const build = {
+    public: 'public'
+}
 
 const endpoint: Express.Router = Express.Router()
 
