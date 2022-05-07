@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { Button, Col, Row, Image, Icon } from 'sveltestrap';
+	import Daemon from '$lib/components/monero/Daemon.svelte';
+
 	let isLoggedIn = false;
 	let daemon = false;
 	let ticker = false;
@@ -13,11 +15,13 @@
 	style="width:100%"
 >
 	<Col class="">
+		<Daemon connected={daemon} on:click={toggleLogin} />
 		<span class="box {daemon ? 'green' : 'red'}" on:click={toggleLogin}>
+			monerod
 			{#if !daemon}
-				monerod <Icon name="emoji-frown-fill" />
+				<Icon name="emoji-frown-fill" />
 			{:else}
-				monerod <Icon name="emoji-sunglasses" />
+				<Icon name="emoji-sunglasses" />
 			{/if}
 		</span>
 		<span class="box {ticker ? 'green' : 'red'}" on:click={toggleLogin}>
@@ -35,20 +39,20 @@
 <!--/div-->
 <svelte:head>
 	<style>
-  .box {
-    border: 2px solid rgb(134, 125, 125);
-    padding: 1px 3px 1px 3px;
-    border-radius: 5px;
-    /*margin-right: 1ch;
+		.box {
+			border: 2px solid rgb(134, 125, 125);
+			padding: 1px 3px 1px 3px;
+			border-radius: 5px;
+			/*margin-right: 1ch;
     font: size 1.5rem;*/
-    font-weight: bold;
-    user-select: none;
-  }
-  .box.green {
-    color: #15ec15;
-  }
-  .box.red {
-    color: #f83d3d;
-  }
+			font-weight: bold;
+			user-select: none;
+		}
+		.box.green {
+			color: #15ec15;
+		}
+		.box.red {
+			color: #f83d3d;
+		}
 	</style>
 </svelte:head>
