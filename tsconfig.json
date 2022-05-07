@@ -31,8 +31,11 @@
 			"$lib/*": [
 				"src/lib/*"
 			],
-			"@utils": [
+			"$utils": [
 				"src/lib/utils"
+			],
+			"@components": [
+				"src/lib/components"
 			]
 		}
 	},
