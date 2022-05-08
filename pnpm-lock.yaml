@@ -8,6 +8,7 @@ specifiers:
   '@sveltejs/adapter-node': ^1.0.0-next.73
   '@sveltejs/kit': next
   '@types/express': ^4.17.13
+  '@types/node': '*'
   '@typescript-eslint/eslint-plugin': ^5.22.0
   '@typescript-eslint/parser': ^5.22.0
   cors: ^2.8.5
@@ -44,6 +45,7 @@ dependencies:
 devDependencies:
   '@sveltejs/kit': 1.0.0-next.326_svelte@3.48.0
   '@types/express': 4.17.13
+  '@types/node': 17.0.23
   '@typescript-eslint/eslint-plugin': 5.22.0_lnjlwhtxjffjmj5o7dnwvwyqxq
   '@typescript-eslint/parser': 5.22.0_t725usgvqspm5woeqpaxbfp2qu
   eslint: 8.14.0
