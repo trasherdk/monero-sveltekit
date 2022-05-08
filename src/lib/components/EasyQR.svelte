@@ -12,8 +12,8 @@
 			text: codeValue,
 			logo: logo,
 			// ... your other options
-			width: 100,
-			height: 100,
+			width: 300,
+			height: 300,
 			quietZone: 10
 		};
 		new QRCode(node, options);
