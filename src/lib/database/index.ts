@@ -1,5 +1,14 @@
 import { knex, Knex } from 'knex';
 import * as path from 'node:path';
+import dotenv from 'dotenv';
+import { fileURLToPath } from 'url'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+
+const config = path.resolve('.env.development')
+console.log('dotenv:', config)
+dotenv.config({ path: config })
 
 let pool: Knex;
 
@@ -32,7 +41,7 @@ export async function getConnection (): Promise<Knex> {
 export async function query<T = unknown> (query: string, params: Knex.ValueDict | Knex.RawBinding[] = []): Promise<T[]> {
 
   const { client } = await getSettings();
-  console.log('database: %s', client)
+  console.log('Database[client]:', client)
 
   // Knex returns weird typings for the raw function,
   const result = (await (await getPool()).raw(query, params)) as RawResult<T>;
@@ -51,8 +60,9 @@ export function getSettings (): Knex.Config {
   let client: string;
 
   // Declare explicitly the client to use, or try to infer it.
-  if (Object.keys(process.env).includes('MYSQL_DATABASE')) {
-    client = process.env.MYSQL_DATABASE;
+  if (Object.keys(process.env).includes('DB_DRIVER')) {
+    console.log('Loading ENV from dotenv')
+    client = process.env.DB_DRIVER;
     connection = {
       host: process.env.DB_HOST || '127.0.0.1',
       port: parseInt(process.env.DB_PORT as string, 10) || 3306,
@@ -60,15 +70,18 @@ export function getSettings (): Knex.Config {
       password: process.env.DB_PASS,
       database: process.env.DB_NAME,
     };
-
-    if (process.env.MYSQL_INSTANCE_CONNECTION_NAME) {
-      (connection as Knex.MySql2ConnectionConfig).socketPath = '/cloudsql/' + process.env.MYSQL_INSTANCE_CONNECTION_NAME;
-    } else {
-      delete connection.host;
-      delete connection.port;
-    }
+  } else if (Object.keys(import.meta.env).includes('VITE_DB_DRIVER')) {
+    console.log('Loading ENV from import.meta.env')
+    client = process.env.DB_DRIVER;
+    connection = {
+      host: `${import.meta.env.VITE_DB_HOST}` || '127.0.0.1',
+      port: parseInt(import.meta.env.DB_PORT as string, 10) || 3306,
+      user: `${import.meta.env.DB_USER}`,
+      password: `${import.meta.env.DB_PASS}`,
+      database: `${import.meta.env.DB_NAME}`,
+    };
   } else {
-    throw new Error('No database client selected, please provide either PG_DATABASE or MYSQL_DATABASE environment variables');
+    throw new Error('No database client selected, please provide DB_DRIVER environment variables');
   }
 
   return {
