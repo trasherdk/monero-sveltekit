@@ -2,6 +2,7 @@
 	import { Button, Col, Row, Image, Icon } from 'sveltestrap';
 	import EasyQr from '$lib/components/EasyQR.svelte';
 	import generatePayload from 'promptpay-qr';
+	import { shortenAddress } from '$utils/monero';
 
 	const titlogo = '/images/fumlersoft-shield-cut-100x100.png';
 	const titqr = '00020101021129390016A000000677010111031500499909148250453037645802TH63047F59';
@@ -53,6 +54,7 @@
 					<h4>Monero (Stagenet)</h4>
 					<div class="qr-wrapper">
 						<EasyQr id="monero-qr" codeValue={xmrqr} logo={xmrlogo} />
+						<div>{shortenAddress(xmrqr, 8)}</div>
 					</div>
 				</Col>
 			</Row>
