@@ -13,25 +13,21 @@
 
 	import LoginForm from '$lib/components/LoginForm.svelte';
 	import LogoutForm from '$lib/components/LogoutForm.svelte';
+	type FormStateType = '' | 'login' | 'logout' | 'register';
 
+	let formState = '';
 	let isLoggedIn = false;
 	let loginForm = false;
 	let logoutForm = false;
+	let alias = '';
 
 	// variable that control whether mobile menu is open or closed
 	let isOpen = false;
 
 	const toggleOpen = () => (isOpen = !isOpen);
 	const toggleLogin = () => {
-		// console.clear();
-		console.log(
-			`Enter: loginForm: ${loginForm}, logoutForm: ${logoutForm}, isLoggedIn: ${isLoggedIn}`
-		);
-		loginForm = !isLoggedIn;
-		logoutForm = isLoggedIn;
-		console.log(
-			`Exit: loginForm: ${loginForm}, logoutForm: ${logoutForm}, isLoggedIn: ${isLoggedIn}`
-		);
+		console.log('toggleLogin', formState, isLoggedIn);
+		formState = isLoggedIn ? 'logout' : 'login';
 	};
 
 	const handleUpdate = () => {
@@ -57,30 +53,33 @@
 			</NavItem>
 		</Nav>
 		<Nav class="ms-auto" navbar>
-			{#if !isLoggedIn}
-				<NavItem>
-					<NavLink on:click={toggleLogin}>
+			<NavItem>
+				<NavLink on:click={toggleLogin}>
+					{#if !isLoggedIn}
 						<span style="color:red;font-size:1rem;font-weight:bold">Login</span>
 						<Icon name="lock" style="color:red;font-size:1rem" />
-					</NavLink>
-				</NavItem>
-			{:else}
-				<NavItem>
-					<NavLink on:click={toggleLogin}>
-						<span style="color:green;font-size:1rem;font-weight:bold">TrasherDK</span>
+					{:else}
+						<span style="color:green;font-size:1rem;font-weight:bold">{alias}</span>
 						<Icon name="unlock" style="color:green;font-size:1rem" />
-					</NavLink>
-				</NavItem>
-			{/if}
+					{/if}
+				</NavLink>
+			</NavItem>
 		</Nav>
 	</Collapse>
 </Navbar>
 
-<LoginForm bind:authenticated={isLoggedIn} bind:formOpen={loginForm} isOpen={loginForm} size="sm" />
+<LoginForm
+	bind:authenticated={isLoggedIn}
+	bind:formState
+	bind:alias
+	isOpen={formState == 'login'}
+	size="sm"
+/>
 
 <LogoutForm
 	bind:authenticated={isLoggedIn}
-	bind:formOpen={logoutForm}
-	isOpen={logoutForm}
+	bind:formState
+	bind:alias
+	isOpen={formState == 'logout'}
 	size="sm"
 />
