@@ -2,6 +2,7 @@ import { knex, Knex } from 'knex';
 import * as path from 'node:path';
 import dotenv from 'dotenv';
 import { fileURLToPath } from 'url'
+import { db } from '$utils/vars';
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -43,8 +44,10 @@ export async function query<T = unknown> (query: string, params: Knex.ValueDict 
   const { client } = await getSettings();
   console.log('Database[client]:', client)
 
+  const querypool = await getPool();
+
   // Knex returns weird typings for the raw function,
-  const result = (await (await getPool()).raw(query, params)) as RawResult<T>;
+  const result = await querypool.raw(query, params) as RawResult<T>;
 
   return (result as RawMySQLResult<T>)[0];
 }
@@ -70,15 +73,15 @@ export function getSettings (): Knex.Config {
       password: process.env.DB_PASS,
       database: process.env.DB_NAME,
     };
-  } else if (Object.keys(import.meta.env).includes('VITE_DB_DRIVER')) {
+  } else if ('driver' in db) {
     console.log('Loading ENV from import.meta.env')
-    client = process.env.DB_DRIVER;
+    client = `${db.driver}`;
     connection = {
-      host: `${import.meta.env.VITE_DB_HOST}` || '127.0.0.1',
-      port: parseInt(import.meta.env.DB_PORT as string, 10) || 3306,
-      user: `${import.meta.env.DB_USER}`,
-      password: `${import.meta.env.DB_PASS}`,
-      database: `${import.meta.env.DB_NAME}`,
+      host: `${db.host}` || '127.0.0.1',
+      port: parseInt(db.port as string, 10) || 3306,
+      user: `${db.user}`,
+      password: `${db.password}`,
+      database: `${db.database}`
     };
   } else {
     throw new Error('No database client selected, please provide DB_DRIVER environment variables');
