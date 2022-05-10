@@ -34,8 +34,17 @@
 			"$utils": [
 				"src/lib/utils"
 			],
-			"@components": [
+			"$utils/*": [
+				"src/lib/utils/*"
+			],
+			"$components": [
 				"src/lib/components"
+			],
+			"$service": [
+				"src/service"
+			],
+			"$service/*": [
+				"src/service/*"
 			]
 		}
 	},

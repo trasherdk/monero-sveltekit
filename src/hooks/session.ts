@@ -1,5 +1,5 @@
 /** @type {import('@sveltejs/kit').GetSession} */
-import { parseCookie } from '@utils/cookie'
+import { parseCookie } from '$lib/utils/cookie'
 
 export function getSession (event) {
   console.log('hooks: getSession')
