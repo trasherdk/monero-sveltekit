@@ -11,23 +11,35 @@
 		Input,
 		Label
 	} from 'sveltestrap';
+	import { post } from '$utils/post';
 
 	export let isOpen = false;
-	export let formOpen = false;
+	export let formState = '';
 	export let size: any;
+	export let alias: string = '';
+	export let authenticated = false;
+	let passwordVal: string = '';
+
 	const toggle = () => {
 		size = 'md';
 		isOpen = !isOpen;
-		formOpen = isOpen;
+		formState = '';
 	};
 
-	let aliasVal: string = '';
-	let passwordVal: string = '';
-	export let authenticated = false;
-
 	const login = async () => {
-		authenticated = true;
+		console.log('Alias: [%s] Password: [%s]', alias, passwordVal);
+
+		const body = {
+			alias: alias,
+			passwd: passwordVal
+		};
+		const userAuth = await post('/auth/login', body);
+
+		authenticated = userAuth.authenticated;
+		alias = userAuth.alias;
+		passwordVal = '';
 		isOpen = false;
+		formState = '';
 	};
 </script>
 
@@ -36,10 +48,10 @@
 	<ModalBody>
 		<Form>
 			<FormGroup floating label="Enter your alias">
-				<Input name="alias" value={aliasVal} />
+				<Input name="alias" bind:value={alias} />
 			</FormGroup>
 			<FormGroup floating label="Enter your password">
-				<Input name="password" value={passwordVal} />
+				<Input name="password" bind:value={passwordVal} />
 			</FormGroup>
 		</Form>
 	</ModalBody>
