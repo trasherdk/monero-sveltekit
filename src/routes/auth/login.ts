@@ -1,5 +1,5 @@
 /** @type {import('@sveltejs/kit').RequestHandler} */
-import db from "$lib/database";
+import db from "$service/database";
 
 /*
 export async function get (event) {
@@ -35,6 +35,7 @@ export async function post ({ request }) {
   const usercnt = await db.query('select count(*) users from auth')
 
   console.log('Users in DB:', usercnt[0])
+
   const query = 'select * from auth where alias = ?'
   const auth = await db.query(query, [params.alias])
   console.log(query.replace('?', `'${params.alias}'`), auth)
@@ -42,7 +43,8 @@ export async function post ({ request }) {
     body: {
       id: 1,
       alias: 'TrasherDK',
-      authenticated: true
+      authenticated: true,
+      otp: false
     }
   }
 }
