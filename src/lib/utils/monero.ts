@@ -7,7 +7,7 @@ export const atomic2dec = (atomic: number, decimals: number) => {
 
 }
 
-export const dec2atomic = (dec: string | number) => typeof dec === 'string' ? parseFloat(dec) * 1e12 : dec * 1e12
+export const dec2atomic = (dec: string | number) => (typeof dec === 'string' ? parseFloat(dec) : dec) * 1e12
 
 export function shortenAddress (address: string, chars = 6) {
   return (

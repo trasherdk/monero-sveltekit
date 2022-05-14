@@ -9,7 +9,7 @@
  * @param {number} interval The numeric interval to round to
  * @return {number}
  */
-export const roundToNearest = (value: number, interval: number) => {
+export const roundToNearest = (value: number, interval: number): number => {
   return Math.floor(value / interval) * interval;
 };
 
@@ -49,6 +49,14 @@ export const groupByTicketSize = (levels: number[][], ticketSize: number): numbe
   return groupByPrice(levels.map(level => [roundToNearest(level[0], ticketSize), level[1]]));
 };
 
-export const formatNumber = (arg: number): string => {
-  return new Intl.NumberFormat('en-US').format(arg);
+/**
+ * Format a number according to locale.
+ * Example: 'en-US' 1.2, 'da-DK' 1,2
+ *
+ * @param {number} arg
+ * @param {string} locale
+ * @returns {string}
+ */
+export const formatNumber = (arg: number, locale = 'en-US'): string => {
+  return new Intl.NumberFormat(locale).format(arg);
 };
