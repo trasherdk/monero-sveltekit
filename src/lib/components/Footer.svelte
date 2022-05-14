@@ -1,10 +1,14 @@
 <script lang="ts">
 	import { Button, Col, Row, Image, Icon } from 'sveltestrap';
-	import Daemon from '$lib/components/monero/Daemon.svelte';
+	import Daemon from '$lib/components/Daemon.svelte';
+	import Ticker from '$lib/components/Ticker.svelte';
+	import Control from '$lib/components/Control.svelte';
 
 	let isLoggedIn = false;
 	let daemon = false;
 	let ticker = false;
+	let control = false;
+
 	const toggleLogin = () => (daemon = ticker = isLoggedIn = !isLoggedIn);
 </script>
 
@@ -16,20 +20,8 @@
 >
 	<Col class="">
 		<Daemon connected={daemon} on:click={toggleLogin} />
-		<span class="box {daemon ? 'green' : 'red'}" on:click={toggleLogin}>
-			monerod
-			{#if !daemon}
-				<Icon name="emoji-frown-fill" />
-			{:else}
-				<Icon name="emoji-sunglasses" />
-			{/if}
-		</span>
-		<span class="box {ticker ? 'green' : 'red'}" on:click={toggleLogin}>
-			Ticker <Icon name="bar-chart-fill" />
-		</span>
-		<span class="box {isLoggedIn ? 'green' : 'red'}" on:click={toggleLogin}>
-			Control <Icon name="cloud" class="" />
-		</span>
+		<Ticker connected={ticker} on:click={toggleLogin} />
+		<Control connected={control} on:click={toggleLogin} />
 	</Col>
 	<Col class="ms-auto">
 		<small>Copyright &copy; {new Date().getFullYear()} TrasherDK</small>

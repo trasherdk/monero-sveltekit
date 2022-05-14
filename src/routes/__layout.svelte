@@ -1,7 +1,7 @@
 <script>
 	import { Styles } from 'sveltestrap';
-	import NavBar from '$lib/components/NavBar.svelte';
-	import Footer from '$lib/components/Footer.svelte';
+	import NavBar from '$components/NavBar.svelte';
+	import Footer from '$components/Footer.svelte';
 </script>
 
 <NavBar />

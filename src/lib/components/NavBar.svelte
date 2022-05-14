@@ -11,8 +11,8 @@
 		Image
 	} from 'sveltestrap';
 
-	import LoginForm from '$lib/components/LoginForm.svelte';
-	import LogoutForm from '$lib/components/LogoutForm.svelte';
+	import LoginForm from '$components/LoginForm.svelte';
+	import LogoutForm from '$components/LogoutForm.svelte';
 	type FormStateType = '' | 'login' | 'logout' | 'register';
 
 	let formState = '';
