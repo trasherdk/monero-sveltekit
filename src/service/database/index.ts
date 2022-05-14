@@ -1,8 +1,8 @@
 import { knex, Knex } from 'knex';
 import * as path from 'node:path';
 import dotenv from 'dotenv';
+// import { db } from '$utils/vars';
 import { fileURLToPath } from 'url'
-import { db } from '$utils/vars';
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -73,16 +73,18 @@ export function getSettings (): Knex.Config {
       password: process.env.DB_PASS,
       database: process.env.DB_NAME,
     };
-  } else if ('driver' in db) {
-    console.log('Loading ENV from import.meta.env')
-    client = `${db.driver}`;
-    connection = {
-      host: `${db.host}` || '127.0.0.1',
-      port: parseInt(db.port as string, 10) || 3306,
-      user: `${db.user}`,
-      password: `${db.password}`,
-      database: `${db.database}`
-    };
+    /**
+    } else if ('driver' in db) {
+      console.log('Loading ENV from import.meta.env')
+      client = `${db.driver}`;
+      connection = {
+        host: `${db.host}` || '127.0.0.1',
+        port: parseInt(db.port as string, 10) || 3306,
+        user: `${db.user}`,
+        password: `${db.password}`,
+        database: `${db.database}`
+      };
+    **/
   } else {
     throw new Error('No database client selected, please provide DB_DRIVER environment variables');
   }
