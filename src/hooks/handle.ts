@@ -18,23 +18,18 @@ export async function handle ({ event, resolve }) {
     // if this is the first time the user has visited this app,
     // set a cookie so that we recognise them when they return
     setCookies.push(`userid=${event.locals.userid}; Path=/; SameSite=Strict; HttpOnly`)
-    /*
-    response.headers.set(
-      'Set-Cookie', `'userid'=${event.locals.userid}; Path='/'; HttpOnly`
-    );
-    */
   }
 
-  setCookies.push(`X-Custom-Header=potato; Path=/; SameSite=Strict; HttpOnly`)
-  /*
-  response.headers.set(
-    'X-Custom-Header', `potato; Path='/'; HttpOnly`
-  );
-    */
+  if (!cookies['X-Custom-Header']) {
+    setCookies.push(`X-Custom-Header=potato; Path=/; SameSite=Strict; HttpOnly`)
+  }
+
   console.log('hooks: handle[Set-Cookie]', setCookies)
-  response.headers.set(
-    'Set-Cookie', setCookies
-  );
+  if (setCookies.length) {
+    response.headers.set(
+      'Set-Cookie', setCookies
+    );
+  }
   console.log(response.headers);
 
   return response;
