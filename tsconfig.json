@@ -40,6 +40,9 @@
 			"$components": [
 				"src/lib/components"
 			],
+			"$components/*": [
+				"src/lib/components/*"
+			],
 			"$service": [
 				"src/service"
 			],
