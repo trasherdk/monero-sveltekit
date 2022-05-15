@@ -15,10 +15,8 @@
 	import LogoutForm from '$components/LogoutForm.svelte';
 	type FormStateType = '' | 'login' | 'logout' | 'register';
 
-	let formState = '';
+	let formState: FormStateType = '';
 	let isLoggedIn = false;
-	let loginForm = false;
-	let logoutForm = false;
 	let alias = '';
 
 	// variable that control whether mobile menu is open or closed
