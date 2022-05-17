@@ -1,4 +1,3 @@
-import { mode } from '$app/env';
 import { knex, Knex } from 'knex';
 import * as path from 'node:path';
 // import { dbconfig } from '$utils/vitevars';
