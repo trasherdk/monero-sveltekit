@@ -1,15 +1,12 @@
+import { mode } from '$app/env';
 import { knex, Knex } from 'knex';
 import * as path from 'node:path';
-import dotenv from 'dotenv';
-// import { db } from '$utils/vars';
+// import { dbconfig } from '$utils/vitevars';
+import { dbconfig } from '$utils/dotvars';
 import { fileURLToPath } from 'url'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
-
-const config = path.resolve('.env.development')
-console.log('dotenv:', config)
-dotenv.config({ path: config })
 
 let pool: Knex;
 
@@ -63,15 +60,15 @@ export function getSettings (): Knex.Config {
   let client: string;
 
   // Declare explicitly the client to use, or try to infer it.
-  if (Object.keys(process.env).includes('DB_DRIVER')) {
+  if (Object.keys(dbconfig).includes('driver')) {
     console.log('Loading ENV from dotenv')
-    client = process.env.DB_DRIVER;
+    client = dbconfig.driver;
     connection = {
-      host: process.env.DB_HOST || '127.0.0.1',
-      port: parseInt(process.env.DB_PORT as string, 10) || 3306,
-      user: process.env.DB_USER,
-      password: process.env.DB_PASS,
-      database: process.env.DB_NAME,
+      host: dbconfig.host || '127.0.0.1',
+      port: parseInt(dbconfig.port as string, 10) || 3306,
+      user: dbconfig.user,
+      password: dbconfig.password,
+      database: dbconfig.database,
     };
     /**
     } else if ('driver' in db) {
@@ -86,7 +83,7 @@ export function getSettings (): Knex.Config {
       };
     **/
   } else {
-    throw new Error('No database client selected, please provide DB_DRIVER environment variables');
+    throw new Error('No database client selected, please provide VITE_DB_DRIVER environment variables');
   }
 
   return {
@@ -103,6 +100,6 @@ export function getSettings (): Knex.Config {
       schemaName: connection.database as string,
     },
     pool: { min: 0, max: 10 },
-    debug: process.env.DEBUG ? true : false,
+    debug: dbconfig.debug == 'true',
   };
 }
