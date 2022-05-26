@@ -12,7 +12,9 @@
 	} from 'sveltestrap';
 
 	import LoginForm from '$components/LoginForm.svelte';
+	import registerForm from '$components/RegisterForm.svelte';
 	import LogoutForm from '$components/LogoutForm.svelte';
+	import RegisterForm from '$components/RegisterForm.svelte';
 	type FormStateType = '' | 'login' | 'logout' | 'register';
 
 	let formState: FormStateType = '';
@@ -71,6 +73,14 @@
 	bind:formState
 	bind:alias
 	isOpen={formState == 'login'}
+	size="sm"
+/>
+
+<RegisterForm
+	bind:authenticated={isLoggedIn}
+	bind:formState
+	bind:alias
+	isOpen={formState == 'register'}
 	size="sm"
 />
 

@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { Button, Col, Row, Image, Icon } from 'sveltestrap';
+
+	const latest = '0.17.3.2';
 </script>
 
 <svelte:head>
@@ -22,7 +24,7 @@
 			<p>
 				Check Monero out here:
 				<Button
-					href="https://github.com/monero-project/monero/tree/v0.17.3.0#introduction"
+					href="https://github.com/monero-project/monero/tree/v${latest}#introduction"
 					target="_blank"
 					color="info"
 					outline><Icon name="github" style="color:gray" /> Monero project</Button
@@ -41,9 +43,9 @@
 				<li>
 					A Node.js library for creating Monero applications using RPC and WebAssembly bindings to
 					<Button
-						href="https://github.com/monero-project/monero/releases/tag/v0.17.3.0"
+						href="https://github.com/monero-project/monero/releases/tag/v${latest}"
 						target="_blank"
-						outline>monero v0.17.3.0 'Oxygen Orion'</Button
+						outline>monero v${latest} 'Oxygen Orion'</Button
 					>
 				</li>
 				<li>Supports wallet and daemon RPC clients.</li>
