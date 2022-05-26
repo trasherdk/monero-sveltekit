@@ -2,6 +2,7 @@
 	import { Button, Col, Row, Image, Icon } from 'sveltestrap';
 	import EasyQr from '$lib/components/EasyQR.svelte';
 	import generatePayload from 'promptpay-qr';
+	import { copy as svelteCopy } from 'svelte-copy';
 	import { shortenAddress } from '$utils/monero';
 
 	const titlogo = '/images/fumlersoft-shield-cut-100x100.png';
@@ -38,10 +39,10 @@
 		</Col>
 	</Row>
 	<Row cols={3} class="mt-5">
-		<Col>
+		<Col style="width:25%">
 			<h3 class="mb-2 border-bottom">Alice</h3>
 		</Col>
-		<Col>
+		<Col style="width:50%">
 			<h3 class="mb-2 border-bottom">Exchange</h3>
 			<Row cols={2}>
 				<Col>
@@ -54,12 +55,17 @@
 					<h4>Monero (Stagenet)</h4>
 					<div class="qr-wrapper">
 						<EasyQr id="monero-qr" codeValue={xmrqr} logo={xmrlogo} />
-						<div>{shortenAddress(xmrqr, 8)}</div>
+						<div>
+							{shortenAddress(xmrqr, 8)}
+							<span use:svelteCopy={xmrqr}>
+								<Icon name="clipboard" />
+							</span>
+						</div>
 					</div>
 				</Col>
 			</Row>
 		</Col>
-		<Col>
+		<Col style="width: 25%">
 			<h3 class="mb-2 border-bottom">Bob</h3>
 		</Col>
 	</Row>
