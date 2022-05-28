@@ -30,7 +30,7 @@ WANT='"type": "module"\,'
 HAVE='"module": "lib\/index.js"\,'
 if [ -f "${FILE}" ]; then
   echo "Check if ${WANT} is in ${FILE}"
-  if grep ${WANT} "${FILE}" > /dev/null 2&>1 ; then
+  if grep -q ${WANT} "${FILE}" > /dev/null 2&>1 ; then
     echo "Already patched."
   else
     echo "Performing the patch..."
