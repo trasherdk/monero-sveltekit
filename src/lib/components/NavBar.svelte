@@ -49,6 +49,9 @@
 				<NavLink href="/AliceBob">Alice & Bob</NavLink>
 			</NavItem>
 			<NavItem>
+				<NavLink href="/GoogleFonts">Google Fonts</NavLink>
+			</NavItem>
+			<NavItem>
 				<NavLink href="/about">About</NavLink>
 			</NavItem>
 		</Nav>

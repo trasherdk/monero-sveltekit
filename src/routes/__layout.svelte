@@ -1,4 +1,5 @@
 <script>
+	import '@fontsource/courier-prime';
 	import { Styles } from 'sveltestrap';
 	import NavBar from '$components/NavBar.svelte';
 	import Footer from '$components/Footer.svelte';

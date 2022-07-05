@@ -16,8 +16,8 @@
 	const titqrcode = generatePayload(titphone, { amount: 123.45 });
 </script>
 
-<svelte:head>
-	<title>Alice & Bob - Monero SvelteKit</title>
+<sveltekit:head>
+	<title>Alice & Bob - Monero SveltekitKit</title>
 	<style>
 		.container-80 {
 			width: 80%;
@@ -29,8 +29,18 @@
 			margin-left: auto;
 			margin-right: auto;
 		}
+		.courier-mono {
+			font-family: 'Courier Prime', monospace;
+			font-size: 16px;
+		}
+		.center {
+			text-align: center;
+		}
+		.nowrap {
+			white-space: nowrap;
+		}
 	</style>
-</svelte:head>
+</sveltekit:head>
 
 <div class="container-90 mt-2 mb-5">
 	<Row cols={1} class="border-bottom">
@@ -55,11 +65,10 @@
 					<h4>Monero (Stagenet)</h4>
 					<div class="qr-wrapper">
 						<EasyQr id="monero-qr" codeValue={xmrqr} logo={xmrlogo} />
-						<div>
+
+						<div class="courier-mono center nowrap" use:svelteCopy={xmrqr}>
 							{shortenAddress(xmrqr, 8)}
-							<span use:svelteCopy={xmrqr}>
-								<Icon name="clipboard" />
-							</span>
+							<Icon name="clipboard" />
 						</div>
 					</div>
 				</Col>
